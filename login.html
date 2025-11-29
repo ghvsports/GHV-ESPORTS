@@ -3,7 +3,6 @@
 <head>
     <title>Login | GHV ESPORTS</title>
 
-    <!-- Orbitron + Inter fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
     <style>
@@ -15,93 +14,88 @@
             --muted:#c9c9c9;
         }
 
-        body {
-            margin: 0;
-            background: var(--bg);
-            color: white;
-            font-family: Inter, sans-serif;
-            text-align: center;
-            padding: 20px;
+        body{
+            margin:0;
+            background:var(--bg);
+            color:white;
+            font-family:Inter;
+            text-align:center;
+            padding:20px;
         }
 
-        .container {
-            max-width: 420px;
-            margin: auto;
-            background: var(--card);
-            padding: 25px;
-            border-radius: 16px;
-            border: 1px solid rgba(255,255,255,0.05);
-            box-shadow: 0 0 40px rgba(61, 90, 254, 0.15);
+        .container{
+            max-width:420px;
+            margin:auto;
+            background:var(--card);
+            padding:25px;
+            border-radius:16px;
+            border:1px solid rgba(255,255,255,0.05);
         }
 
-        h1 {
-            font-family: Orbitron;
-            font-size: 26px;
-            margin-bottom: 5px;
-            background: linear-gradient(90deg, var(--blue), var(--purple));
-            -webkit-background-clip: text;
-            color: transparent;
+        h1{
+            font-family:Orbitron;
+            font-size:26px;
+            background:linear-gradient(90deg,var(--blue),var(--purple));
+            -webkit-background-clip:text;
+            color:transparent;
         }
 
-        p {
-            color: var(--muted);
-            margin-top: 0;
+        input{
+            width:100%;
+            padding:12px;
+            background:#1a1a1a;
+            border:none;
+            border-radius:10px;
+            margin-bottom:12px;
+            color:white;
         }
 
-        input {
-            width: 100%;
-            padding: 12px;
-            background: #1a1a1a;
-            border: none;
-            border-radius: 10px;
-            margin-bottom: 12px;
-            color: white;
-            font-size: 15px;
-        }
-
-        .btn {
-            background: linear-gradient(90deg, var(--blue), var(--purple));
-            padding: 12px;
-            border: none;
-            width: 100%;
-            border-radius: 10px;
-            color: white;
-            font-weight: 600;
-            font-size: 15px;
-            margin-top: 12px;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(193,88,220,0.15);
+        .btn{
+            background:linear-gradient(90deg,var(--blue),var(--purple));
+            padding:12px;
+            width:100%;
+            border:none;
+            border-radius:10px;
+            color:white;
+            font-weight:600;
+            cursor:pointer;
         }
     </style>
-
 </head>
+
 <body>
 
 <div class="container">
-    <h1>GHV Login</h1>
-    <p>Welcome back, player!</p>
+    <h1>Login</h1>
+    <p>Welcome back to GHV ESPORTS</p>
 
-    <input type="text" id="user" placeholder="Enter Username">
-    <input type="password" id="pass" placeholder="Enter Password">
+    <input type="text" id="loginUser" placeholder="Email ID">
+    <input type="password" id="loginPass" placeholder="Enter Password">
 
-    <button class="btn" onclick="login()">LOGIN</button>
+    <!-- Login button -->
+    <button class="btn" onclick="login()">Login</button>
 
-    <a href="register.html" class="small-link">Don’t have an account? sighup</a>
+    <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
 </div>
 
 <script>
 function login() {
-    let user = document.getElementById("user").value;
-    let pass = document.getElementById("pass").value;
-
     let savedUser = localStorage.getItem("username");
     let savedPass = localStorage.getItem("password");
 
+    let user = document.getElementById("loginUser").value;
+    let pass = document.getElementById("loginPass").value;
+
+    if(user === "" || pass === ""){
+        alert("Please enter username and password");
+        return;
+    }
+
     if(user === savedUser && pass === savedPass){
-        localStorage.setItem("loggedIn", "true");
-        window.location.href = "index.html"; // HOME PAGE
+        alert("Login Successful!");
+        window.location.href = "index.html";  // Dashboard or home
     } else {
-        alert("Incorrect username or password!");
+        alert("Incorrect Email or Password");
     }
 }
 </script>

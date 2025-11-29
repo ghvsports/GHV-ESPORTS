@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register | GHV ESPORTS</title>
+    <title>Sign Up | GHV ESPORTS</title>
 
     <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
@@ -11,7 +11,6 @@
             --card:#0f0f14;
             --blue:#3D5AFE;
             --purple:#C158DC;
-            --muted:#c9c9c9;
         }
 
         body{
@@ -19,8 +18,8 @@
             background:var(--bg);
             color:white;
             font-family:Inter;
-            text-align:center;
             padding:20px;
+            text-align:center;
         }
 
         .container{
@@ -34,7 +33,7 @@
 
         h1{
             font-family:Orbitron;
-            font-size:26px;
+            font-size:28px;
             background:linear-gradient(90deg,var(--blue),var(--purple));
             -webkit-background-clip:text;
             color:transparent;
@@ -43,55 +42,67 @@
         input{
             width:100%;
             padding:12px;
-            background:#1a1a1a;
+            margin-bottom:12px;
             border:none;
             border-radius:10px;
-            margin-bottom:12px;
+            background:#1a1a1a;
             color:white;
         }
 
         .btn{
-            background:linear-gradient(90deg,var(--blue),var(--purple));
-            padding:12px;
             width:100%;
+            padding:12px;
             border:none;
             border-radius:10px;
-            color:white;
             font-weight:600;
             cursor:pointer;
+            background:linear-gradient(90deg,var(--blue),var(--purple));
+            color:white;
+            margin-top:5px;
+        }
+
+        a{
+            color:#7a7cff;
+            text-decoration:none;
         }
     </style>
-</head>
 
+</head>
 <body>
 
 <div class="container">
-    <h1>Create Account</h1>
-    <p>Join GHV esports community</p>
+    <h1>Sign Up</h1>
+    <p>Create your account</p>
 
-    <input type="text" id="newUser" placeholder="email id">
-    <input type="password" id="newPass" placeholder="Enter Password">
+    <input type="text" id="name" placeholder="Full Name">
+    <input type="email" id="email" placeholder="Email Address">
+    <input type="password" id="password" placeholder="Create Password">
 
-    <button class="btn" onclick=sighup()">sighup</button>
+    <button class="btn" onclick="signup()">Create Account</button>
 
-    <a href="login.html">Already have an account? Login</a>
+    <p style="margin-top:15px;">Already have an account? 
+        <a href="login.html">Login</a>
+    </p>
 </div>
 
 <script>
-function register() {
-    let user = document.getElementById("newUser").value;
-    let pass = document.getElementById("newPass").value;
+function signup() {
+    let name = document.getElementById("name").value;
+    let email = document.getElementById("email").value;
+    let pass = document.getElementById("password").value;
 
-    if(user === "" || pass === ""){
-        alert("Please enter username and password");
+    if(name === "" || email === "" || pass === ""){
+        alert("Please fill all fields!");
         return;
     }
 
-    localStorage.setItem("username", user);
-    localStorage.setItem("password", pass);
+    // Save to localStorage (Demo)
+    localStorage.setItem("userName", name);
+    localStorage.setItem("userEmail", email);
+    localStorage.setItem("userPass", pass);
 
-    alert("Account created!");
-    window.location.href = "login.html";  // LOGIN PAGE
+    alert("Account created successfully!");
+    window.location.href = "login.html";
 }
 </script>
 

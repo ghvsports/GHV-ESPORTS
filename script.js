@@ -1,46 +1,71 @@
-function goLogin() {
+// ---- PAGE REDIRECT FUNCTIONS ----
+<script>
+function goLogin(){
     window.location.href = "login.html";
 }
 
-function goSignup() {
+function goSignup(){
     window.location.href = "signup.html";
 }
 
-// Old function support (optional)
-function goRegister() {
-    goSignup();
-}
-
-function goDashboard() {
+function goDashboard(){
     window.location.href = "dashboard.html";
 }
 
-// ---- SHOW / HIDE BUTTONS BASED ON LOGIN STATUS ----
-if (localStorage.getItem("loggedIn") === "true") {
 
-    // Mobile buttons
-    const loginBtn = document.getElementById("loginBtn");
-    const signupBtn = document.getElementById("signupBtn");
-    const dashboardBtn = document.getElementById("dashboardBtn");
+// ---- SIGNUP FUNCTION ----
+function register() {
+    let user = document.getElementById("newUser").value;
+    let pass = document.getElementById("newPass").value;
 
-    if (loginBtn) loginBtn.style.display = "none";
-    if (signupBtn) signupBtn.style.display = "none";
-    if (dashboardBtn) dashboardBtn.style.display = "block";
+    if (user === "" || pass === "") {
+        alert("Please enter username & password");
+        return;
+    }
 
-    // Desktop navigation
-    document.querySelectorAll('.ghost').forEach(btn => {
-        if (btn.href.includes("login") || btn.href.includes("signup")) {
-            btn.style.display = "none";
-        }
-    });
+    localStorage.setItem("username", user);
+    localStorage.setItem("password", pass);
 
-} else {
-    // When logged OUT
-    const loginBtn = document.getElementById("loginBtn");
-    const signupBtn = document.getElementById("signupBtn");
-    const dashboardBtn = document.getElementById("dashboardBtn");
-
-    if (loginBtn) loginBtn.style.display = "inline-block";
-    if (signupBtn) signupBtn.style.display = "inline-block";
-    if (dashboardBtn) dashboardBtn.style.display = "none";
+    alert("Account created successfully!");
+    window.location.href = "login.html";
 }
+
+// ---- LOGIN FUNCTION ----
+function login() {
+    let user = document.getElementById("user").value;
+    let pass = document.getElementById("pass").value;
+
+    if (
+        user === localStorage.getItem("username") &&
+        pass === localStorage.getItem("password")
+    ) {
+        localStorage.setItem("loggedIn", "true");
+        alert("Login successful!");
+        window.location.href = "dashboard.html";
+    } else {
+        alert("Invalid username or password");
+    }
+}
+
+// ---- LOGOUT FUNCTION ----
+function logout() {
+    localStorage.setItem("loggedIn", "false");
+    window.location.href = "index.html";
+}
+
+// ---- NAVIGATION BUTTON VISIBILITY ----
+window.onload = function () {
+    const loginBtn = document.getElementById("loginBtn");
+    const signupBtn = document.getElementById("signupBtn");
+    const dashboardBtn = document.getElementById("dashboardBtn");
+
+    if (localStorage.getItem("loggedIn") === "true") {
+        if (loginBtn) loginBtn.style.display = "none";
+        if (signupBtn) signupBtn.style.display = "none";
+        if (dashboardBtn) dashboardBtn.style.display = "inline-block";
+    } else {
+        if (loginBtn) loginBtn.style.display = "inline-block";
+        if (signupBtn) signupBtn.style.display = "inline-block";
+        if (dashboardBtn) dashboardBtn.style.display = "none";
+    }
+};

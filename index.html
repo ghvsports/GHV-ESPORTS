@@ -57,8 +57,9 @@
 <button class="btn" id="dashboardBtn" onclick="goDashboard()" style="display:none;">
     Dashboard
 </button>
-        <a href="signup.html" class="btn">Sign Up</a>
-        <a class="btn" href="tournament.html">Tournament</a>
+       
+       
+       
 
       </div>
     </header>
@@ -186,23 +187,26 @@ function goLogin(){
     window.location.href = "login.html";
 }
 
-function goSignup(){ window.location.href = "signup.html"; }
+function goSignup(){
+    window.location.href= "signup.html";
+}
 
 function goDashboard(){
     window.location.href = "dashboard.html";
 }
 
-// -------- Show/Hide Login Register Buttons --------
+// Fix: SAFE check (no error)
 if(localStorage.getItem("loggedIn") === "true"){
-    document.getElementById("loginBtn").style.display = "none";
-    document.getElementById("registerBtn").style.display = "none";
-    document.getElementById("dashboardBtn").style.display = "block";
-} else {
-    document.getElementById("loginBtn").style.display = "block";
-    document.getElementById("registerBtn").style.display = "block";
-    document.getElementById("dashboardBtn").style.display = "none";
+    let loginBtn = document.getElementById("loginBtn");
+    let signupBtn = document.getElementById("signupBtn");
+    let dashboardBtn = document.getElementById("dashboardBtn");
+
+    if(loginBtn) loginBtn.style.display = "none";
+    if(signupBtn) signupBtn.style.display = "none";
+    if(dashboardBtn) dashboardBtn.style.display = "block";
 }
 </script>
+
 
 </body>
 </html>
