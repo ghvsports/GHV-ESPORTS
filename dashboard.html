@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard | GHV ESPORTS</title>
+
+    <!-- Orbitron + Inter fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg:#0a0a0a;
+            --card:#0f0f14;
+            --blue:#3D5AFE;
+            --purple:#C158DC;
+            --muted:#c9c9c9;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: white;
+            font-family: Inter, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 450px;
+            margin: auto;
+            background: var(--card);
+            padding: 25px;
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 0 40px rgba(61, 90, 254, 0.15);
+        }
+
+        h1 {
+            font-family: Orbitron;
+            font-size: 26px;
+            margin-bottom: 5px;
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            color: var(--muted);
+            margin-top: 0;
+        }
+
+        .btn {
+            background: linear-gradient(90deg, var(--blue), var(--purple));
+            padding: 12px;
+            border: none;
+            width: 100%;
+            border-radius: 10px;
+            color: white;
+            font-weight: 600;
+            font-size: 15px;
+            margin-top: 12px;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(193,88,220,0.15);
+        }
+
+        .btn:hover {
+            opacity: 0.88;
+        }
+
+        .neon-box {
+            margin-top: 20px;
+            padding: 18px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.05);
+            box-shadow: 0 0 20px rgba(62,90,254,0.15);
+        }
+
+        .footer-text {
+            margin-top: 20px;
+            color: var(--muted);
+            font-size: 12px;
+        }
+    </style>
+
+</head>
+<body>
+
+<div class="container">
+    <h1>GHV Dashboard</h1>
+    <p>You are successfully logged in!</p>
+
+    <div class="neon-box">
+        <h3 style="margin:0; font-family:Orbitron;">Welcome Player</h3>
+        <p style="margin:6px 0;">Enjoy tournaments, scrims & results</p>
+    </div>
+
+    <!-- 🔵🟣 Tournament Button -->
+    <button class="btn" onclick="goTournament()">🎮 Join Tournament</button>
+
+    <!-- Home & Logout -->
+    <button class="btn" onclick="goHome()">🏠 Back to Home</button>
+    <button class="btn" onclick="logout()">🚪 Logout</button>
+</div>
+
+<p class="footer-text">GHV ESPORTS © All Rights Reserved</p>
+
+<script>
+// Allow only logged users
+if(localStorage.getItem("loggedIn") !== "true"){
+    window.location.href = "login.html";
+}
+
+function logout(){
+    localStorage.setItem("loggedIn", "false");
+    window.location.href = "index.html";
+}
+
+function goHome(){
+    window.location.href = "index.html";
+}
+
+// Tournament Page Link
+function goTournament(){
+    window.location.href = "tournament.html";
+}
+</script>
+
+</body>
+</html>

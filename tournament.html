@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tournament Registration</title>
+
+<style>
+    :root{
+        --bg:#0a0a0a;
+        --card:#0f0f14;
+        --blue:#3D5AFE;
+        --purple:#C158DC;
+        --muted:#c9c9c9;
+    }
+    *{box-sizing:border-box;font-family:Inter,Arial;}
+    body{
+        margin:0;background:var(--bg);color:white;padding:16px;
+    }
+    h2{
+        text-align:center;font-family:Orbitron;margin-bottom:20px;
+        color:var(--blue);
+        text-shadow:0 0 10px rgba(61,90,254,0.5);
+    }
+    .container-small{
+        max-width:420px;margin:auto;
+        background:var(--card);
+        padding:20px;border-radius:16px;
+        border:1px solid rgba(255,255,255,0.05);
+        box-shadow:0 0 35px rgba(61,90,254,0.15),0 0 35px rgba(193,88,220,0.1);
+    }
+    label{
+        display:block;margin-top:12px;color:var(--muted);font-size:14px;
+    }
+    input{
+        width:100%;padding:10px;margin-top:4px;
+        border:none;border-radius:10px;
+        background:#1b1b22;color:white;
+        outline:none;font-size:15px;
+    }
+    .btn{
+        width:100%;margin-top:20px;padding:12px;
+        border:none;border-radius:10px;
+        background:linear-gradient(90deg,var(--blue),var(--purple));
+        color:white;font-size:16px;font-weight:600;
+        box-shadow:0 6px 20px rgba(61,90,254,0.25);
+    }
+    a{
+        display:block;text-align:center;margin-top:14px;
+        color:var(--muted);font-size:14px;text-decoration:none;
+    }
+</style>
+
+</head>
+
+<body>
+
+<div class="container-small">
+    <h2>TOURNAMENT ENTRY</h2>
+
+    <label>Team Name</label>
+    <input id="teamName">
+
+    <label>Player 1 BGMI ID</label>
+    <input id="p1">
+
+    <label>Player 2 BGMI ID</label>
+    <input id="p2">
+
+    <label>Player 3 BGMI ID</label>
+    <input id="p3">
+
+    <label>Player 4 BGMI ID</label>
+    <input id="p4">
+
+    <button class="btn" onclick="submitTournament()">Register</button>
+
+    <a href="dashboard.html">← Back to Dashboard</a>
+</div>
+
+<script>
+function submitTournament(){
+    alert("Tournament Registration Submitted Successfully!");
+}
+</script>
+
+</body>
+</html>

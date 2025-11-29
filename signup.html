@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register | GHV ESPORTS</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root{
+            --bg:#0a0a0a;
+            --card:#0f0f14;
+            --blue:#3D5AFE;
+            --purple:#C158DC;
+            --muted:#c9c9c9;
+        }
+
+        body{
+            margin:0;
+            background:var(--bg);
+            color:white;
+            font-family:Inter;
+            text-align:center;
+            padding:20px;
+        }
+
+        .container{
+            max-width:420px;
+            margin:auto;
+            background:var(--card);
+            padding:25px;
+            border-radius:16px;
+            border:1px solid rgba(255,255,255,0.05);
+        }
+
+        h1{
+            font-family:Orbitron;
+            font-size:26px;
+            background:linear-gradient(90deg,var(--blue),var(--purple));
+            -webkit-background-clip:text;
+            color:transparent;
+        }
+
+        input{
+            width:100%;
+            padding:12px;
+            background:#1a1a1a;
+            border:none;
+            border-radius:10px;
+            margin-bottom:12px;
+            color:white;
+        }
+
+        .btn{
+            background:linear-gradient(90deg,var(--blue),var(--purple));
+            padding:12px;
+            width:100%;
+            border:none;
+            border-radius:10px;
+            color:white;
+            font-weight:600;
+            cursor:pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+    <h1>Create Account</h1>
+    <p>Join GHV esports community</p>
+
+    <input type="text" id="newUser" placeholder="email id">
+    <input type="password" id="newPass" placeholder="Enter Password">
+
+    <button class="btn" onclick=sighup()">sighup</button>
+
+    <a href="login.html">Already have an account? Login</a>
+</div>
+
+<script>
+function register() {
+    let user = document.getElementById("newUser").value;
+    let pass = document.getElementById("newPass").value;
+
+    if(user === "" || pass === ""){
+        alert("Please enter username and password");
+        return;
+    }
+
+    localStorage.setItem("username", user);
+    localStorage.setItem("password", pass);
+
+    alert("Account created!");
+    window.location.href = "login.html";  // LOGIN PAGE
+}
+</script>
+
+</body>
+</html>
